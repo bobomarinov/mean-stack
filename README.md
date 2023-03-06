@@ -1,2 +1,2 @@
-# End-to-End-JS-App-Mean-Stack
+# End-to-End-JS-App-M-Stack
 University course
