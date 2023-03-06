@@ -1,0 +1,26 @@
+version: '3'
+services:
+  app:
+    build: frontend/.
+    ports:
+      - "80:4200"
+    volumes:
+      - '/app/frontend/node_modules'
+      - './frontend/src:/app/frontend/src'
+  database:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - database:/data/db'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+  backend:
+    build: backend/.
+    ports:
+      - "3000:3000"
+    # volumes:
+    #   - './backend/students-api:/app/backend/students-api'
+volumes:
+  database:
