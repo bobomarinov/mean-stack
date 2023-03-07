@@ -20,6 +20,29 @@ mongoose.connect('mongodb://mongodb:27017/admin', {
 })
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.log(err));
+mongoose.set('bufferCommands', false);
+
+// if connection with the database is successful check if students collection exists
+mongoose.connection.on('connected', function () {
+  console.log('Mongoose default connection open to ' + 'mongodb://mongodb:27017/admin');
+  // check if students collection exists
+  mongoose.connection.db.listCollections({name: 'students'})
+  .next(function(err, collinfo) {
+    if (collinfo) {
+      // The collection exists
+      console.log('Collection students exists');
+    }
+    else {
+      // The collection does not exist
+      console.log('Collection students does not exist');
+      // create students collection
+      mongoose.connection.db.createCollection('students', function(err, res) {
+        if (err) throw err;
+        console.log('Collection students created');
+      });
+    }
+  });
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

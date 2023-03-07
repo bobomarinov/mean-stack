@@ -33,6 +33,7 @@ services:
       - './backend/public:/app/backend/public'
       - './backend/routes:/app/backend/routes'
       - './backend/views:/app/backend/views'
+      - './backend/models:/app/backend/models'
       - './backend/app.js:/app/backend/app.js'
     depends_on:
       - mongodb
