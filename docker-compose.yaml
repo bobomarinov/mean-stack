@@ -7,12 +7,12 @@ services:
     volumes:
       - '/app/frontend/node_modules'
       - './frontend/src:/app/frontend/src'
-  database:
+  mongodb:
     image: mongo
     ports:
       - "27017:27017"
     volumes:
-      - database:/data/db'
+      - /data/db'
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=example
@@ -25,5 +25,3 @@ services:
       - './backend/routes:/app/backend/routes'
       - './backend/views:/app/backend/views'
       - './backend/app.js:/app/backend/app.js'
-volumes:
-  database:

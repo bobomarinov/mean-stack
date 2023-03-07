@@ -1,34 +1,29 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('Welcome to the Student API');
+  res.send('Welcome to the students API');
 });
 
-// GET all students
-router.get('/all', function(req, res, next) {
-    res.send('All students');
+router.get('/get', function(req, res, next) {
+    res.send('Get a student');
 });
 
-// GET a student by id
-router.get('/:id', function(req, res, next) {
-    res.send('Student with id: ' + req.params.id);
+router.get('/list', function(req, res, next) {
+    res.send('List of students');
 });
 
-// POST a new student
-router.post('/new', function(req, res, next) {
-    res.send('New student');
+router.get('/add', function(req, res, next) {
+    res.send('Add a student');
 });
 
-// PUT an existing student
-router.put('/update/:id', function(req, res, next) {
-    res.send('Update student with id: ' + req.params.id);
+router.get('/edit', function(req, res, next) {
+    res.send('Edit a student');
 });
 
-// DELETE a student
-router.delete('/delete/:id', function(req, res, next) {
-    res.send('Delete student with id: ' + req.params.id);
+router.get('/delete', function(req, res, next) {
+    res.send('Delete a student');
 });
 
 module.exports = router;
