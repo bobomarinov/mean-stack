@@ -3,12 +3,23 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var studentsRouter = require('./routes/students');
 
 var app = express();
+
+// Connect to MongoDB with user and password
+mongoose.connect('mongodb://mongodb:27017/admin', {
+  user: 'root',
+  pass: 'example',
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB Connected'))
+.catch(err => console.log(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
