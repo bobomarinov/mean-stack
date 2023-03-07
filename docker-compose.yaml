@@ -12,8 +12,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      # - database:/data/db'
-      - ./database/data/db:/data/db
+      - database:/data/db'
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=example
@@ -26,5 +25,5 @@ services:
       - './backend/routes:/app/backend/routes'
       - './backend/views:/app/backend/views'
       - './backend/app.js:/app/backend/app.js'
-# volumes:
-#   database:
+volumes:
+  database:
