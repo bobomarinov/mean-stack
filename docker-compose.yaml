@@ -20,7 +20,9 @@ services:
     build: backend/.
     ports:
       - "3000:3000"
-    # volumes:
-    #   - './backend/students-api:/app/backend/students-api'
+    volumes:
+      - './backend/public:/app/backend/public'
+      - './backend/routes:/app/backend/routes'
+      - './backend/views:/app/backend/views'
 volumes:
   database:

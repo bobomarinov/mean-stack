@@ -8,7 +8,9 @@ RUN express backend
 WORKDIR /app/backend
 RUN npm install
 
-# Copy package.json and package-lock.json
-# COPY package.json package-lock.json
+
+COPY package-lock.json package-lock.json
+COPY package.json package.json
+COPY app.js app.js
 
 CMD ["npm","start"]
