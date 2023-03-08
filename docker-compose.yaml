@@ -3,10 +3,11 @@ services:
   app:
     build: frontend/.
     ports:
-      - "80:4200"
+      # - "80:4200" --for development only
+      - "80:80"
     volumes:
       - '/app/frontend/node_modules'
-      - './frontend/src:/app/frontend/src'
+      # - './frontend/src:/app/frontend/src' --for deployment only
   mongodb:
     image: mongo
     ports:
@@ -27,14 +28,16 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongodb:27017/
   backend:
     build: backend/.
+    environment:
+      DATABASE_SERVICE_HOST: mongodb
     ports:
       - "3000:3000"
-    volumes:
-      - './backend/public:/app/backend/public'
-      - './backend/routes:/app/backend/routes'
-      - './backend/views:/app/backend/views'
-      - './backend/models:/app/backend/models'
-      - './backend/app.js:/app/backend/app.js'
+    # volumes: --for deployment only
+    #   - './backend/public:/app/backend/public'
+    #   - './backend/routes:/app/backend/routes'
+    #   - './backend/views:/app/backend/views'
+    #   - './backend/models:/app/backend/models'
+    #   - './backend/app.js:/app/backend/app.js'
     depends_on:
       - mongodb
 volumes:

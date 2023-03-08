@@ -14,16 +14,16 @@ WORKDIR /app/frontend
 COPY package.json package-lock.json
 COPY package.json package.json 
 
-CMD ["ng","serve","--host","0.0.0.0"]
+# CMD ["ng","serve","--host","0.0.0.0"] --- for development only
 
-# COPY frontend/src/ src/
+COPY . .
 
-# RUN ng build
+RUN ng build
 
-# FROM nginx:1.19.2-alpine
+FROM nginx:latest
 
-# COPY --from=build /app/frontend/dist/frontend /usr/share/nginx/html
+COPY --from=build /app/frontend/dist/frontend /usr/share/nginx/html
 
-# EXPOSE 80
+EXPOSE 80
 
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
