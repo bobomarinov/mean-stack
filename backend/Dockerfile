@@ -11,4 +11,6 @@ COPY package*.json /app/backend/
 WORKDIR /app/backend
 RUN npm install
 
+COPY . /app/backend
+
 CMD ["npm", "start"]
