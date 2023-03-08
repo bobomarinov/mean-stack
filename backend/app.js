@@ -12,7 +12,9 @@ var studentsRouter = require('./routes/students');
 var app = express();
 
 // Connect to MongoDB with user and password
-mongoose.connect('mongodb://mongodb:27017/admin', {
+databaseurl_docker = process.env.DATABASE_URL ;
+databaseurl_kubernetes = process.env.DATABASE_SERVICE_HOST ;
+mongoose.connect('mongodb://'+databaseurl_kubernetes+':27017/admin', {
   user: 'root',
   pass: 'example',
   useNewUrlParser: true,
