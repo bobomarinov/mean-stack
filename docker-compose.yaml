@@ -30,7 +30,7 @@ services:
     build: backend/.
     environment:
       DATABASE_SERVICE_HOST: mongodb
-      DATABASE_URL: mongodb
+      # DATABASE_URL: mongodb
     ports:
       - "3000:3000"
     # volumes: --for deployment only
