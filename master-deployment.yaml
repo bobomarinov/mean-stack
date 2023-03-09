@@ -9,9 +9,6 @@ spec:
     - protocol: 'TCP'
       port: 3000
       targetPort: 3000
-    # - protocol: 'TCP'
-    #   port: 443
-    #   targetPort: 443
   type: LoadBalancer
 ---
 apiVersion: apps/v1
@@ -35,9 +32,10 @@ spec:
           image: borismarinov2023/end-to-end-js-app-mean-stack-backend:latest
           ports:
             - containerPort: 3000
-          # env:
-          #   - name: DATABASE_URL
-          #     value: "10.104.6.32"
+          env:
+            - name: DATABASE_HOST
+              # value: "10.104.6.32"
+              value: "database.default"
           resources:
             requests:
               memory: "128Mi"

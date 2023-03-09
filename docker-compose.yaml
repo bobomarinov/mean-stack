@@ -29,16 +29,16 @@ services:
   backend:
     build: backend/.
     environment:
-      DATABASE_SERVICE_HOST: mongodb
-      # DATABASE_URL: mongodb
+      # DATABASE_SERVICE_HOST: mongodb
+      DATABASE_HOST: mongodb
     ports:
       - "3000:3000"
-    # volumes: --for deployment only
+    volumes: 
     #   - './backend/public:/app/backend/public'
     #   - './backend/routes:/app/backend/routes'
     #   - './backend/views:/app/backend/views'
     #   - './backend/models:/app/backend/models'
-    #   - './backend/app.js:/app/backend/app.js'
+      - './backend/app.js:/app/backend/app.js'
     depends_on:
       - mongodb
 volumes:
