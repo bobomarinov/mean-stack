@@ -48,3 +48,40 @@
   </div>
   <button type="submit">Add Student</button>
 </form>
+
+<!--Add search button and results form-->
+<h2>Search Student by First Name</h2>
+
+<form #searchForm="ngForm" (ngSubmit)="searchByFirstName(searchForm.value)">
+  <div>
+    <label for="search">Search:</label>
+    <input type="text" name="search" ngModel required>
+  </div>
+  <button type="submit">Search</button>
+</form>
+
+<!--Add search results-->
+<h2>Search Results</h2>
+
+<table>
+    <thead>
+        <tr>
+        <th>uniqNumber</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>facultyNumber</th>
+        <th>birthDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of searchResult">
+        <td>{{ student.uniqNumber }}</td>
+        <td>{{ student.firstName }}</td>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.facultyNumber }}</td>
+        <td>{{ student.birthDate }}</td>
+        <td><button (click)="deleteStudent(student.uniqNumber)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+

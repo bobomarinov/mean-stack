@@ -1,10 +1,72 @@
-ul {
-    list-style: none;
-    padding: 0;
+/* Change font to sans-serif */
+body {
+    font-family: 'Monospace', sans-serif;
   }
   
-  li {
+  /* Update background color and text color */
+  body {
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  
+  /* Style tables */
+  table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    width: 100%;
+  }
+  
+  table th, table td {
+    border: 1px solid #ccc;
     padding: 10px;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #eee;
+    font-weight: bold;
+  }
+  
+  /* Style form elements */
+  form {
+    margin: 20px 0;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"], input[type="date"] {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* Style headings */
+  h2 {
     border-bottom: 1px solid #ccc;
+    font-size: 24px;
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
   }
   
