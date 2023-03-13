@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Student } from './models/student.model';
+import axios from 'axios';
 
 @Component({
   selector: 'app-root',
@@ -24,10 +25,21 @@ export class AppComponent {
   }
 
   deleteStudent(uniqNumber: string) {
-    this.http.delete('http://localhost:3000/students/delete?uniqNumber=' + uniqNumber)
-      .subscribe(response => {
+    // const headers = { 'Content-Type': 'application/json' };
+    
+    // this.http.delete('http://localhost:3000/students/delete?uniqNumber=' + uniqNumber, { headers })
+    //   .subscribe(response => {
+    //     this.getStudents();
+    //   })
+    //   ;
+    axios.delete('http://localhost:3000/students/delete?uniqNumber=' + uniqNumber)
+      .then(response => {
         this.getStudents();
-      });
+      })
+      .catch(error => {
+        console.log(error);
+      }
+      );
   }
 
 
