@@ -21,26 +21,25 @@ export class AppComponent {
   }
 
   getStudents() {
-    this.http.get('http://'+host+':3000/students')
+    this.http.get('http://' + host + ':3000/students')
       .subscribe(response => {
         this.students = response;
       });
   }
 
   deleteStudent(uniqNumber: string) {
-    // const headers = { 'Content-Type': 'application/json' };
-    
-    // this.http.delete('http://localhost:3000/students/delete?uniqNumber=' + uniqNumber, { headers })
-    //   .subscribe(response => {
-    //     this.getStudents();
-    //   })
-    //   ;
-    axios.delete('http://'+host+':3000/students/delete?uniqNumber=' + uniqNumber)
+    axios.delete(
+      'http://' + host + ':3000/students/delete?uniqNumber=' + uniqNumber,
+    )
       .then(response => {
+        console.log(response.data); // handle success
+        // update UI after deleting
         this.getStudents();
+        // also update search result to reflect the change but keep the search term
+        this.searchByFirstName(this.searchResult.search);
       })
       .catch(error => {
-        console.log(error);
+        console.log(error); // handle error
       }
       );
   }
@@ -50,16 +49,16 @@ export class AppComponent {
     const headers = { 'Content-Type': 'application/json' };
     const body = JSON.stringify(newStudentData);
     //send as parameters
-    this.http.post('http://'+host+':3000/students?firstName=' + newStudentData.firstName + '&lastName=' + newStudentData.lastName + '&facultyNumber=' + newStudentData.facultyNumber + '&birthDate=' + newStudentData.birthDate, body, { headers })
+    this.http.post('http://' + host + ':3000/students?firstName=' + newStudentData.firstName + '&lastName=' + newStudentData.lastName + '&facultyNumber=' + newStudentData.facultyNumber + '&birthDate=' + newStudentData.birthDate, body, { headers })
       .subscribe(response => {
         this.getStudents();
       });
-    } 
+  }
 
   editStudent(studentData: Student) {
     const headers = { 'Content-Type': 'application/json' };
     const body = JSON.stringify(studentData);
-    this.http.put('http://'+host+':3000/students/edit?firstName=' + studentData.firstName + '&lastName=' + studentData.lastName + '&facultyNumber=' + studentData.facultyNumber + '&birthDate=' + studentData.birthDate + '&uniqNumber=' + studentData.uniqNumber, body, { headers })
+    this.http.put('http://' + host + ':3000/students/edit?firstName=' + studentData.firstName + '&lastName=' + studentData.lastName + '&facultyNumber=' + studentData.facultyNumber + '&birthDate=' + studentData.birthDate + '&uniqNumber=' + studentData.uniqNumber, body, { headers })
       .subscribe(response => {
         this.getStudents();
       });
@@ -68,14 +67,14 @@ export class AppComponent {
   searchByFirstName(firstName: string) {
     //convert to string and send as parameters
     const body = JSON.stringify(firstName);
-    this.http.get('http://'+host+':3000/students/search?firstName=' + firstName.search)
+    this.http.get('http://' + host + ':3000/students/search?firstName=' + firstName.search)
       .subscribe(response => {
-        this.searchResult = response; 
+        this.searchResult = response;
       });
   }
 
   searchByUniqNumber(uniqNumber: string) {
-    this.http.get('http://'+host+':3000/students/id?uniqNumber=' + uniqNumber)
+    this.http.get('http://' + host + ':3000/students/id?uniqNumber=' + uniqNumber)
       .subscribe(response => {
         this.students = response;
       });

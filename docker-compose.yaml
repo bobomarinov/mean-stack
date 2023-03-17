@@ -7,7 +7,7 @@ services:
       - "80:80"
     volumes:
       - '/app/frontend/node_modules'
-      # - './frontend/src:/app/frontend/src' --for deployment only
+      # - './frontend/src:/app/frontend/src'
   mongodb:
     image: mongo
     ports:

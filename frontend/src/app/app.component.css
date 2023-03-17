@@ -1,72 +1,78 @@
-/* Change font to sans-serif */
+/* Change font to Monospace */
+* {
+  font-family: 'Monospace', Monospace;
+}
+
+/* Update background color and text color */
 body {
-    font-family: 'Monospace', sans-serif;
-  }
-  
-  /* Update background color and text color */
-  body {
-    background-color: #f8f8f8;
-    color: #333;
-  }
-  
-  /* Style tables */
-  table {
-    border-collapse: collapse;
-    margin: 20px 0;
-    width: 100%;
-  }
-  
-  table th, table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  table th {
-    background-color: #eee;
-    font-weight: bold;
-  }
-  
-  /* Style form elements */
-  form {
-    margin: 20px 0;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"], input[type="date"] {
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-    padding: 10px;
-    width: 100%;
-  }
-  
-  button[type="submit"] {
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 3px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px;
-    width: 100%;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #3e8e41;
-  }
-  
-  /* Style headings */
-  h2 {
-    border-bottom: 1px solid #ccc;
-    font-size: 24px;
-    margin: 40px 0 20px;
-    padding-bottom: 10px;
-    text-transform: uppercase;
-  }
-  
+  background-color: #F6F1F1;
+  color: #000000;
+}
+
+/* Style tables */
+table {
+  border-collapse: collapse;
+  margin: 20px 0;
+  width: 100%;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #19A7CE;
+  font-weight: bold;
+}
+
+/* Style form elements */
+form {
+  margin: 20px 0;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: .25em;
+}
+
+input[type="text"],
+input[type="date"] {
+  border-radius: 3px;
+  border: solid;
+  border-width: .5px;
+  border-color: #146C94;
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: .25em;
+  padding-bottom: .25em;
+  width: auto;
+}
+
+button[type="submit"] {
+  background-color: #146C94;
+  border: none;
+  border-radius: .25em;
+  color: #FFFFFF;
+  padding-left: .75em;
+  padding-right: .75em;
+  padding-top: .375em;
+  padding-bottom: .375em;
+  width: auto;
+}
+
+button[type="submit"]:hover {
+  background-color: #19A7CE;
+}
+
+/* Style headings */
+h2 {
+  font-size: x-large;
+  font-weight: bold;
+  text-transform: none;
+  text-decoration: none;
+  color: #000000;
+}
