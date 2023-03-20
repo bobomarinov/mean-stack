@@ -35,8 +35,8 @@ export class AppComponent {
         console.log(response.data); // handle success
         // update UI after deleting
         this.getStudents();
-        // also update search result to reflect the change but keep the search term
-        this.searchByFirstName(this.searchResult.search);
+        // press the search button
+        this.searchByFirstName(this.searchResult);
       })
       .catch(error => {
         console.log(error); // handle error
