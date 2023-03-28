@@ -1,27 +1,30 @@
 <h2>Students List</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>uniqNumber</th>
-      <th>firstName</th>
-      <th>lastName</th>
-      <th>facultyNumber</th>
-      <th>birthDate</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let student of students">
-      <td>{{ student.uniqNumber }}</td>
-      <td>{{ student.firstName }}</td>
-      <td>{{ student.lastName }}</td>
-      <td>{{ student.facultyNumber }}</td>
-      <td>{{ student.birthDate }}</td>
-      <td><button (click)="deleteStudent(student.uniqNumber)">Delete</button></td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>uniqNumber</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>facultyNumber</th>
+        <th>birthDate</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.uniqNumber }}</td>
+        <td>{{ student.firstName }}</td>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.facultyNumber }}</td>
+        <td>{{ student.birthDate }}</td>
+        <td>
+          <button (click)="deleteStudent(student.uniqNumber)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <h2>Add New Student</h2>
 
@@ -32,19 +35,19 @@
   </div> -->
   <div>
     <label for="firstName">First Name:</label>
-    <input type="text" name="firstName" ngModel required>
+    <input type="text" name="firstName" ngModel required />
   </div>
   <div>
     <label for="lastName">Last Name:</label>
-    <input type="text" name="lastName" ngModel required>
+    <input type="text" name="lastName" ngModel required />
   </div>
   <div>
     <label for="facultyNumber">Faculty Number:</label>
-    <input type="text" name="facultyNumber" ngModel required>
+    <input type="text" name="facultyNumber" ngModel required />
   </div>
   <div>
     <label for="birthDate">Birth Date:</label>
-    <input type="date" name="birthDate" ngModel required>
+    <input type="date" name="birthDate" ngModel required />
   </div>
   <button type="submit">Add Student</button>
 </form>
@@ -55,33 +58,36 @@
 <form #searchForm="ngForm" (ngSubmit)="searchByFirstName(searchForm.value)">
   <div>
     <label for="search">Search:</label>
-    <input type="text" name="search" ngModel required>
+    <input type="text" name="search" ngModel required />
   </div>
   <button type="submit">Search</button>
 </form>
 
 <!--Add search results-->
 <h2>Search Results</h2>
-
-<table>
+<div class="table-container">
+  <table>
     <thead>
-        <tr>
+      <tr>
         <th>uniqNumber</th>
         <th>firstName</th>
         <th>lastName</th>
         <th>facultyNumber</th>
         <th>birthDate</th>
-        </tr>
+        <th>Delete</th>
+      </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let student of searchResult">
+      <tr *ngFor="let student of searchResult">
         <td>{{ student.uniqNumber }}</td>
         <td>{{ student.firstName }}</td>
         <td>{{ student.lastName }}</td>
         <td>{{ student.facultyNumber }}</td>
         <td>{{ student.birthDate }}</td>
-        <td><button (click)="deleteStudent(student.uniqNumber)">Delete</button></td>
-        </tr>
+        <td>
+          <button (click)="deleteStudent(student.uniqNumber)">Delete</button>
+        </td>
+      </tr>
     </tbody>
-</table>
-
+  </table>
+</div>

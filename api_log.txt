@@ -1,0 +1,69 @@
+Request Time: 2023-03-20 12:41:09.870754
+Request Data: {'prompt': 'How to make the tables scrollable?  <h2>Students List</h2>\n\n<table>\n  <thead>\n    <tr>\n      <th>uniqNumber</th>\n      <th>firstName</th>\n      <th>lastName</th>\n      <th>facultyNumber</th>\n      <th>birthDate</th>\n      <th>Delete</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor="let student of students">\n      <td>{{ student.uniqNumber }}</td>\n      <td>{{ student.firstName }}</td>\n      <td>{{ student.lastName }}</td>\n      <td>{{ student.facultyNumber }}</td>\n      <td>{{ student.birthDate }}</td>\n      <td>\n        <button (click)="deleteStudent(student.uniqNumber)">Delete</button>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<h2>Add New Student</h2>\n\n<form #studentForm="ngForm" (ngSubmit)="addStudent(studentForm.value)">\n  <!-- <div>\n    <label for="uniqNumber">Unique Number:</label>\n    <input type="text" name="uniqNumber" ngModel required>\n  </div> -->\n  <div>\n    <label for="firstName">First Name:</label>\n    <input type="text" name="firstName" ngModel required />\n  </div>\n  <div>\n    <label for="lastName">Last Name:</label>\n    <input type="text" name="lastName" ngModel required />\n  </div>\n  <div>\n    <label for="facultyNumber">Faculty Number:</label>\n    <input type="text" name="facultyNumber" ngModel required />\n  </div>\n  <div>\n    <label for="birthDate">Birth Date:</label>\n    <input type="date" name="birthDate" ngModel required />\n  </div>\n  <button type="submit">Add Student</button>\n</form>\n\n<!--Add search button and results form-->\n<h2>Search Student by First Name</h2>\n\n<form #searchForm="ngForm" (ngSubmit)="searchByFirstName(searchForm.value)">\n  <div>\n    <label for="search">Search:</label>\n    <input type="text" name="search" ngModel required />\n  </div>\n  <button type="submit">Search</button>\n</form>\n\n<!--Add search results-->\n<h2>Search Results</h2>\n\n<table>\n  <thead>\n    <tr>\n      <th>uniqNumber</th>\n      <th>firstName</th>\n      <th>lastName</th>\n      <th>facultyNumber</th>\n      <th>birthDate</th>\n      <th>Delete</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor="let student of searchResult">\n      <td>{{ student.uniqNumber }}</td>\n      <td>{{ student.firstName }}</td>\n      <td>{{ student.lastName }}</td>\n      <td>{{ student.facultyNumber }}</td>\n      <td>{{ student.birthDate }}</td>\n      <td>\n        <button (click)="deleteStudent(student.uniqNumber)">Delete</button>\n      </td>\n    </tr>\n  </tbody>\n</table>\n', 'max_tokens': 50, 'temperature': 0.7, 'n': 1, 'stop': '\n'}
+Response Data: {
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "\n\nTo make the tables scrollable, you can apply the following styles to the table element: \n\n```css \ntable {\n  width: 100%;\n  overflow-y: scroll; /* add a scroll bar for vertical scrolling */\n}\n```\n\nThis will make the table horizontally fill its container and add a vertical scrollbar for scrolling through its contents. You can adjust the `overflow-y` property as needed to customize the scrolling behavior.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1679308861,
+  "id": "chatcmpl-6w7Ej4Ytr008jzl4l7L1AkVC87dn7",
+  "model": "gpt-3.5-turbo-0301",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 86,
+    "prompt_tokens": 827,
+    "total_tokens": 913
+  }
+}
+Request Time: 2023-03-20 12:41:46.523061
+Request Data: {'prompt': 'I want the tables to be scrollable and only 5 records to be displayed ', 'max_tokens': 50, 'temperature': 0.7, 'n': 1, 'stop': '\n'}
+Response Data: {
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "You can make the tables scrollable and limit the number of records displayed by utilizing pagination. Set the table height to a fixed value and add a scrollbar to the table wrapper. Then, create a function that retrieves only the first 5 records and pass them to the table component. When the user scrolls down, use the same function to retrieve the next 5 records and append them to the existing records in the table. This way, only 5 records are displayed at any given time, and the user can scroll through the remaining records.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1679308899,
+  "id": "chatcmpl-6w7FLoTx4BgorA3nhhaHOTfCqWJsb",
+  "model": "gpt-3.5-turbo-0301",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 109,
+    "prompt_tokens": 55,
+    "total_tokens": 164
+  }
+}
+Request Time: 2023-03-20 12:42:14.172523
+Request Data: {'prompt': 'give me the whole code so I can paste it', 'max_tokens': 50, 'temperature': 0.7, 'n': 1, 'stop': '\n'}
+Response Data: {
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "\n\nI'm sorry, I cannot provide a whole code as I don't have a context or know what specific code you are referring to. Can you please provide more details or a specific code snippet so I can help you better?",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1679308930,
+  "id": "chatcmpl-6w7FqSYAc4bulm9gBWcy6q360sDr8",
+  "model": "gpt-3.5-turbo-0301",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 46,
+    "prompt_tokens": 49,
+    "total_tokens": 95
+  }
+}
