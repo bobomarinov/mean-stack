@@ -94,62 +94,33 @@ router.get('/search', async (req, res) => {
 
 
 // update student by id
-// TODO: even if I provide non existing uniqNumber it returns 200 and message Student updated
+// fields where no info is provided are not updated
+// first check if student exists by id and if not return error
+// if student exists update only provided fields
 router.put('/edit', async (req, res) => {
     try {
-        if (req.query.uniqNumber != null) {
-            id = req.query.uniqNumber;
-            if (req.query.firstName != null) {
-                try {
-                    await Student.findByIdAndUpdate(id, {firstName: req.query.firstName});
-                } catch (err) {
-                    res.status(500).json({ message: err.message });
-                }
-            }
-            if (req.query.lastName != null) {
-                try {
-                    await Student.findByIdAndUpdate(id, {lastName: req.query.lastName});
-                } catch (err) {
-                    res.status(500).json({ message: err.message });
-                }
-            }
-            if (req.query.facultyNumber != null) {
-                try {
-                    await Student.findByIdAndUpdate(id, {facultyNumber: req.query.facultyNumber});
-                } catch (err) {
-                    res.status(500).json({ message: err.message });
-                }
-            }
-            if (req.query.birthDate != null) {
-                try {
-                    await Student.findByIdAndUpdate(id, {birthDate: req.query.birthDate});
-                } catch (err) {
-                    res.status(500).json({ message: err.message });
-                }
-            }
-        } else {
-            res.status(500).json({ message: 'Provide uniqNumber' });
+        id = req.query.uniqNumber;
+        const student = await Student.findById(id);
+        if (student == null) {
+            return res.status(404).json({ message: 'Cannot find student' });
         }
+        if (req.query.firstName != null) {
+            student.firstName = req.query.firstName;
+        }
+        if (req.query.lastName != null) {
+            student.lastName = req.query.lastName;
+        }
+        if (req.query.facultyNumber != null) {
+            student.facultyNumber = req.query.facultyNumber;
+        }
+        if (req.query.birthDate != null) {
+            student.birthDate = req.query.birthDate;
+        }
+        await student.save();
+        res.status(200).json({ message: 'Student updated' });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
-    
-    //     if (req.query.firstName != null) {
-    //         await Student.findByIdAndUpdate(id, {firstName: req.query.firstName});
-    //     }
-    //     if (req.query.lastName != null) {
-    //         await Student.findByIdAndUpdate(id, {lastName: req.query.lastName});
-    //     }
-    //     if (req.query.facultyNumber != null) {
-    //         await Student.findByIdAndUpdate(id, {facultyNumber: req.query.facultyNumber});
-    //     }
-    //     if (req.query.birthDate != null) {
-    //         await Student.findByIdAndUpdate(id, {birthDate: req.query.birthDate});
-    //     }
-    //     res.status(200).json({ message: 'Student updated' });
-    // } catch (err) {
-    //     res.status(500).json({ message: err.message });
-    // }
 });
 
 
