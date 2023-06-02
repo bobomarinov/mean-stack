@@ -3,7 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Student } from './models/student.model';
 import axios from 'axios';
 
-var host = '78.130.158.235';
+
+
+// make so host is not hardcoded
+// make so you can use the same host for all requests
+
+var host = 'localhost';
 
 @Component({
   selector: 'app-root',

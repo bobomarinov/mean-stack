@@ -74,20 +74,19 @@ router.get('/id', async (req, res) => {
 // search and get students by firstName use find method
 router.get('/search', async (req, res) => {
     try {
-        fistNameQuery = req.query.firstName;
-        const students = await Student.find({firstName: fistNameQuery});
-        //return json but rename field _id to id
+        const firstNameQuery = req.query.firstName;
+        const regex = new RegExp(firstNameQuery, 'i');
+        const students = await Student.find({ firstName: regex });
+
         res.json(students.map(student => {
             return {
                 uniqNumber: student._id,
                 firstName: student.firstName,
                 lastName: student.lastName,
-                //uniqNumber: student.uniqNumber,
                 facultyNumber: student.facultyNumber,
                 birthDate: student.birthDate
-            }
+            };
         }));
-        
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
